@@ -1,0 +1,73 @@
+PowerShellを開き、
+c:\xampp\mysql\bin\mysql.exe -u root -pと打って
+MariaDBを起動させる。
+
+
+#データベースapp01の製作
+create databases app01
+
+
+
+#kindテーブルの製作
+----------------------------------------------------------------------------------------------
+create table kind(
+  kindsID   int NOT NULL auto_increment,
+  kinds     nvarchar(10),
+  primary key(kindsID)
+);
+
+INSERT INTO kind (kinds) VALUES
+ 	('学校'), ('試験'), ('課題'), ('行事'), 
+ 	('就活'), ('アルバイト'), ('旅行')
+;
+
+----------------------------------------------------------------------------------------------
+
+
+#scheduleテーブルの製作
+-----------------------------------------------------------------------------------------------
+
+CREATE TABLE if not exists schedule(
+	ID 	int 	not null auto_increment, 
+ 	days date 	not null, 
+	kindsID int not null, 
+	memo nvarchar(255), 
+PRIMARY KEY(ID), 
+foreign key(kindsID) references kind(kindsID)
+);
+
+INSERT INTO schedule (days, kindsID, memo) VALUES
+(
+"2022-06-06", 1, 
+"Progrise"
+);
+
+
+----------------------------------------------------------------------------------------------
+
+
+
+#userテーブルの製作
+----------------------------------------------------------------------------------------------
+CREATE TABLE if not exists user(
+ 	userno 	int 	not null auto_increment, 
+ 	username 	nvarchar(30) NOT NULL,
+ 	password 	nvarchar(20), 
+ 	PRIMARY KEY(userno)
+);
+
+INSERT INTO user (username, password) VALUES
+(
+"sato", "a"
+);
+
+
+ 	userid int 	NOT NULL auto_increment,
+-----------------------------------------------------------------------------------------------
+
+===========================================
+
+B0021013 情報工学科２年                   
+佐藤　武司                                
+
+===========================================
